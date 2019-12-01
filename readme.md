@@ -1,5 +1,16 @@
 # MediaPicker v:2.4.3
 
+This fork changed the way, videos are used in iOS. They are not compressed anymore (did not work), just downloaded, so the iCloud Download-Progress is now working. Keep in mind, that now a mov is returned and not a mp4 anymore.
+
+use npm OR github:
+
+```
+  cordova plugin add https://github.com/agorum/cordova-plugin-mediaPicker.git
+```
+
+
+Original Text:
+
 android ios mediaPicker support  selection of multiple image and video gif  (Support Chinese, English, Spanish, Portuguese, and Turkish)</br>
 
 android 和 ios cordova图片视频选择插件，支持多图 视频 gif，ui类似微信。 联系QQ：3451927565</br>
