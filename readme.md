@@ -1,6 +1,6 @@
 # MediaPicker v:2.4.3
 
-Abot this fork:
+About this fork:
 
 This fork changed the way, videos are used in iOS. They are not compressed anymore (did not work), just downloaded, so the iCloud Download-Progress is now working. Keep in mind, that now a mov is returned and not a mp4 anymore.
 
