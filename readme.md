@@ -1,5 +1,7 @@
 # MediaPicker v:2.4.3
 
+Abot this fork:
+
 This fork changed the way, videos are used in iOS. They are not compressed anymore (did not work), just downloaded, so the iCloud Download-Progress is now working. Keep in mind, that now a mov is returned and not a mp4 anymore.
 
 use npm OR github:
@@ -8,16 +10,17 @@ use npm OR github:
   cordova plugin add https://github.com/agorum/cordova-plugin-mediaPicker.git
 ```
 
+Many thanks to DmcSDK for this great plugin!
 
 Original Text:
 
 android ios mediaPicker support  selection of multiple image and video gif  (Support Chinese, English, Spanish, Portuguese, and Turkish)</br>
 
-android 和 ios cordova图片视频选择插件，支持多图 视频 gif，ui类似微信。 联系QQ：3451927565</br>
+android, ios cordova, gif，ui：3451927565</br>
 
 [GitHub:](https://github.com/DmcSDK/cordova-plugin-mediaPicker) https://github.com/DmcSDK/cordova-plugin-mediaPicker</br>
 
-怎么用？How do I use?
+How do I use?
 -------------------
 
 use npm OR github:
@@ -73,7 +76,7 @@ function getThumbnail(medias) {
 function loadingUI() {}
 ```    
 
-### upload and compress 上传 和 压缩
+### upload and compress
 demo.js **upload** and **compress** code:
 ```
 document.getElementById('uploadBtn').onclick = function() {
@@ -102,7 +105,7 @@ document.addEventListener("MediaPicker.CompressVideoEvent", function(data) {
 }, false);
 ```    
 
-### takePhoto 拍照 
+### takePhoto
 demo.js **takePhoto** code:
 
 please add : cordova plugin add cordova-plugin-camera
@@ -120,7 +123,7 @@ document.getElementById('takePhotoBtn').onclick = function() {
 };
 ```    
 
-# More api 其他API
+# More api
 [API](https://github.com/DmcSDK/cordova-plugin-mediaPicker/blob/master/www/MediaPicker.js) https://github.com/DmcSDK/cordova-plugin-mediaPicker/blob/master/www/MediaPicker.js</br>
 
 [My android source code GitHub:](https://github.com/DmcSDK/MediaPickerPoject) https://github.com/DmcSDK/MediaPickerPoject</br>
