@@ -286,6 +286,56 @@
     NSInteger quality=[[options objectForKey:@"quality"] integerValue];
     if(quality<100&&[@"image" isEqualToString: [options objectForKey:@"mediaType"]]){
         UIImage *result = [[UIImage alloc] initWithContentsOfFile: [options objectForKey:@"path"]];
+
+        // correct orientation
+        float rotation_radians = 0;
+        bool perpendicular = false;
+        
+        switch (result.imageOrientation) {
+            case UIImageOrientationUp :
+                rotation_radians = 0.0;
+                break;
+                
+            case UIImageOrientationDown:
+                rotation_radians = M_PI; // don't be scared of radians, if you're reading this, you're good at math
+                break;
+                
+            case UIImageOrientationRight:
+                rotation_radians = M_PI_2;
+                perpendicular = true;
+                break;
+                
+            case UIImageOrientationLeft:
+                rotation_radians = -M_PI_2;
+                perpendicular = true;
+                break;
+                
+            default:
+                break;
+        }
+        
+        UIGraphicsBeginImageContext(CGSizeMake(result.size.width, result.size.height));
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        // Rotate around the center point
+        CGContextTranslateCTM(context, result.size.width / 2, result.size.height / 2);
+        CGContextRotateCTM(context, rotation_radians);
+        
+        CGContextScaleCTM(context, 1.0, -1.0);
+        float width = perpendicular ? result.size.height : result.size.width;
+        float height = perpendicular ? result.size.width : result.size.height;
+        CGContextDrawImage(context, CGRectMake(-width / 2, -height / 2, width, height), [result CGImage]);
+        
+        // Move the origin back since the rotation might've change it (if its 90 degrees)
+        if (perpendicular) {
+            CGContextTranslateCTM(context, -result.size.height / 2, -result.size.width / 2);
+        }
+        
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        result = newImage;
+        // end correction
+                
         NSInteger qu = quality>0?quality:3;
         CGFloat q=qu/100.0f;
         NSData *data =UIImageJPEGRepresentation(result,q);
